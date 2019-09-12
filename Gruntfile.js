@@ -8,8 +8,23 @@ module.exports = function(grunt) {
           environment: 'production'
         }
       },
-    }
+    },
+    watch: {
+      options: {
+        livereload: true,
+      },
+      css: {
+        files: ['sass/*.scss'],
+        tasks: ['compass'],
+      },
+    },
   });
-  grunt.loadNpmTasks('grunt-contrib-compass');
+
+  [
+    'grunt-contrib-compass',
+    'grunt-contrib-watch'
+  ].forEach(grunt.loadNpmTasks);
+
   grunt.registerTask('default', ['compass']);
+  
 };
